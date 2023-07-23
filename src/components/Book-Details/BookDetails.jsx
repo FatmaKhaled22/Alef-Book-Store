@@ -50,7 +50,7 @@ export default function BookDetails() {
             <NavLink to="/home" className="nav-link">{t('product-details.home')}</NavLink>
           </li>
           <li className="breadcrumb-item">
-            <NavLink to="/store" className="nav-link">{t('product-details.store')}</NavLink>
+            <NavLink to="/category" className="nav-link">{t('product-details.store')}</NavLink>
           </li>
           <li className="breadcrumb-item">
             <NavLink to={`/store/${category?._id}`} className="nav-link">{category?.name}</NavLink>
