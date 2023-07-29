@@ -7,8 +7,8 @@ import './review.css';
 
 function ListReview({bookId,WWE}) {
 
+  const { t } = useTranslation();
   const [reviews, setReviews] = useState([]);
-
   useEffect(() => {
       axios.get(`/review/book/${bookId}`)
         .then((response) => {
@@ -18,13 +18,11 @@ function ListReview({bookId,WWE}) {
           console.error('Error fetching reviews:', error);
         });
   }, [bookId,WWE]);
-  // reviews.map((review) => {
-  // });
 
  
   return (
     <>
-      {reviews.length === 0 && <p className="text-center">No Reviews yet on this book</p>}
+      {reviews.length === 0 && <h5 className="text-center py-3">{t('review.no-comment')}</h5>}
       <ul className="list-group m-2 list" style={{height:'500px',overflowY: 'auto'}}>
         {reviews.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((review,index) => {
           return (

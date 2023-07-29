@@ -130,15 +130,15 @@ export default function BookDetails() {
               </div>
               <div className="col-md-8"><br /><br/>
                 <div className="fs-5 d-flex flex-column mb-3">
-                  <span className="price">{book?.price}.00 {t('product-details.p-egp')} </span>
+                  <span className="price fs-2">{book?.price}.00 {t('product-details.p-egp')} </span>
                 </div>
-                <div>
+                {/* <div>
                   <i className="bi bi-star-fill"></i>
                   <i className="bi bi-star-fill"></i>
                   <i className="bi bi-star-fill"></i>
                   <i className="bi bi-star-fill"></i>
                   <i className="bi bi-star"></i>
-                </div><br/>
+                </div><br/> */}
                 <ul className="list-unstyled">
                   <li>
                     <span>{t('product-details.t-page')} : {book?.bookPages}</span>
@@ -150,7 +150,7 @@ export default function BookDetails() {
                     <span>{t('product-details.t-author')} :
                       <NavLink to={`/authorBooks/${id}`}
                         className="nav-link d-inline " style={{color:'#900c3f',fontWeight:'bold'}}
-                        onClick={() => dispatch(authorId(authorID))}>{book?.author.name}
+                        onClick={() => dispatch(authorId(authorID))}> {book?.author.name}
                       </NavLink>
                     </span>
                   </li>

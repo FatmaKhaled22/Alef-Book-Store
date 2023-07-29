@@ -1,37 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-// import axios from "../../../../config/axiosConfig";
 import Spinner from "react-bootstrap/Spinner";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-// const USER_URL = "orders/user/";
 
 export default function MyStore() {
 
   const [loading, setLoading] = useState(false);
-  // const userid = localStorage.getItem("userid");
   const order = useSelector((state) => state.order);
   console.log("order---->" , order)
 
-  
-  // const deletOrder= ()=>{
-  //   setLoading(true);
-  //   axios
-  //     .delete(USER_URL+userid, {
-  //       headers: {
-  //         authorization:
-  //           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NzUwMTAwMTM0Y2Y0NmE4NDRiMmRkZiIsImlhdCI6MTY4NTM4OTU5NH0.26zyfxpYchRego4180tU958pVPiIu1xM0W4ayxUbzQw",
-  //       },
-  //     })
-  //     .then((res) => {
-  //       console.log("order");
-  //       setLoading(false);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       setLoading(false);
-  //     });
-  // }
   const { t } = useTranslation();
 
   return (
@@ -55,11 +33,10 @@ export default function MyStore() {
                 <div className="card-body">
                   <div className="row w-100">
                     <div className="col-6">
-                      <h6 className="card-text">Address : <b> {e.address}</b></h6>
-                      <h6 className="card-text ">Method: <b> {e.paymentMethod}</b></h6>
-                      <h6 className="card-text">items : <b> {e.items.length}</b></h6>
-                      <h6 className="card-text">Total Price : <b>{e.totalPrice}</b></h6>
-                      {/* <button href="#" onSubmit={deletOrder} className="btn btn-primary">Remove Order</button> */}
+                      <h6 className="card-text">{t("client-zone.store.l-address")} : <b> {e.address}</b></h6>
+                      <h6 className="card-text ">{t("client-zone.store.method")} : <b> {e.paymentMethod}</b></h6>
+                      <h6 className="card-text">{t("client-zone.store.items")} : <b> {e.items.length}</b></h6>
+                      <h6 className="card-text">{t("client-zone.store.price")} : <b>{e.totalPrice}.00 {t('product-details.p-egp')}</b></h6>
                     </div>
                     <div className="col-6">
                       <div className="card-text">{e.items.map((b)=>{
@@ -74,7 +51,7 @@ export default function MyStore() {
                               <Link to={`/details/${b.book._id}`} style={{textDecoration:"none"}}>
                                 <h4 className="card-text ">{b.book.bookTitle}</h4>
                               </Link>
-                                <h6 className="card-text text-color p-3">{b.book.price}</h6>
+                                <h6 className="card-text text-color p-3">{b.book.price}.00 {t('product-details.p-egp')}</h6>
                               </div>
                             </div>
                           </div>

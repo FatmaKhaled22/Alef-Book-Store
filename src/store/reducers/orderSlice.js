@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAllOrders } from "../../services/ordersService";
 
-// const initailOrders = await getAllOrders();
+const initailOrders = await getAllOrders();
 
 export const orderSlice = createSlice({
   name: 'order',
+  // initialState: initailOrders,
   initialState: [],
   reducers: {
     setOrders: (state, action) => {

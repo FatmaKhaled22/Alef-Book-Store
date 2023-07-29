@@ -102,7 +102,8 @@
         "l-name":"User Name",
         "l-message":"Message",
         "btn":"Submit",
-        "no-comment":"No Reviews yet on this book"
+        "no-comment":"No Reviews yet on this book",
+        "order":"Make an order to write a review"
     },
     "client-zone":{
         "client":{
@@ -136,6 +137,7 @@
             "l-country":"Country",
             "l-lname":"Last Name",
             "l-phone":"Phone",
+            "l-address":"Address",
             "l-sub":"Subscribe",
             "sub-text":"Receive our latest news and updates!",
             "check":"Keep me updated",
@@ -144,11 +146,19 @@
         "myaddress":{
             "address":{
                 "empty-title":"You still did not save an address",
-                "btn-add":"Add New Address"
+                "btn-add":"Add New Address",
+                "hello":"Hello",
+                "l-name":"Full Name",
+                "l-address":"Address",
+                "l-phone":"Phone-Number"
             }
         },
         "store":{
-            "title":"Orders"
+            "title":"Orders",
+            "l-address":"Address",
+            "method":"Method",
+            "items":"Items",
+            "price":"Total Price"
         }
     },
     "side-cart":{

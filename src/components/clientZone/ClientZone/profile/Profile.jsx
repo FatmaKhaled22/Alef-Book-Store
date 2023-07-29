@@ -89,7 +89,7 @@ export default function Profile({data}) {
                     />
                   {/* Address*/}
                     <label htmlFor="address">
-                      Address
+                     {t("client-zone.profile.l-address")}
                     </label>
                     <Field
                       type="text"
@@ -156,21 +156,6 @@ export default function Profile({data}) {
                       component="p"
                       className="text-danger"
                     />
-                  <div className="form-group profile-container-subscribe">
-                    <label className="text-danger" htmlFor="unsubscribe">
-                      {t("client-zone.profile.l-sub")}
-                    </label>
-                    <div className="checkbox">
-                      <label className="checkbox-label">
-                       
-                        <span className="checkbox-custom" />
-                        &nbsp;
-                        <span className="input-title">
-                        - if you want {t("client-zone.profile.check")} Profile data Click <span className="text-danger">Save</span> 
-                        </span>
-                      </label>
-                    </div>
-                  </div>
                 </div>
               </div>
             )}
@@ -190,7 +175,6 @@ export default function Profile({data}) {
               </button>
             </div>
           </Form>
-          
         </Formik>
       </div>
     </div>

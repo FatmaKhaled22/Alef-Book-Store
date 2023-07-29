@@ -80,11 +80,11 @@ function Review() {
           </div>
           {user ? (
             <div>
-              {order.length == 0 ? ( <h5 className="text-center text-color">Make an order to write a review</h5> ) 
+              {order.length == 0 ? ( <h4 className="text-center text-color">{t("review.order")}</h4> ) 
               : (
                 <div>
                   {x ? ( <FormComment addReview={addReview} />  ) 
-                  : ( <h4 className="text-center text-color">Make an order to write a review</h4>
+                  : ( <h3 className="text-center text-color">{t("review.order")}</h3>
                   )}
                 </div>
               )}
