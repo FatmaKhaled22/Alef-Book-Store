@@ -30,6 +30,12 @@ const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-light px-4">
         <div className="container-fluid ">
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" 
+            data-bs-target="#navbarNavDropdown" 
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+          </button>
           <NavLink to="/home" className="nav-link">
             <img src="/assets/img/nav_img.png" alt="logo" height="70" />
           </NavLink>

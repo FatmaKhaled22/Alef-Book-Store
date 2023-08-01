@@ -36,7 +36,6 @@ const Footer = () => {
                 <NavLink to="/contact" className="nav-link">{t("footer.contact")}</NavLink>
               </li>
             </ul><br />
-          {/* <!-- Section: Social media --> */}
         </div>
       </nav>
       <div className="text-center text-white social-div">

@@ -3,7 +3,7 @@ import ListReview from "./list-review";
 import { useState } from "react";
 import FormComment from "./form-comment";
 import { useTranslation } from "react-i18next";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "../../../config/axiosConfig";
 
