@@ -17,7 +17,6 @@ import Share from "./components/navbar/icons-comp/share-comp/share";
 import Call from "./components/navbar/icons-comp/call-comp/call";
 import ClientzoneLogin from "./components/clientZone/ClientZoneRegister/Clientzone-Login";
 import ClientzoneRegister from "./components/clientZone/ClientZoneRegister/Clientzone-Register";
-import RequireAuth from "./components/RequireAuth";
 import Layout from "./components/layout";
 import LangSwitch from "./components/navbar/icons-comp/lang-comp/lang";
 import Categories from "./components/home-page/category/Categories";
@@ -39,9 +38,7 @@ export default function App() {
           <Route path="/tranding" element={<Tranding />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          
-         <Route path="/order" element={<OrderRoute />} />
-         
+          <Route path="/order" element={<OrderRoute />} />
           <Route path="/profile" element={<CLientZoneRouter />} />
           <Route path="login" element={<ClientzoneLogin />} />
           <Route path="/register" element={<ClientzoneRegister />} />

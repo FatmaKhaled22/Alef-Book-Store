@@ -11,18 +11,18 @@ const Category = ({cat}) => {
   return (
     <div className="col">
       <div className="card text-bg-dark">
-        <img src="/assets/img/back-store.jpg" className="card-img" alt="..."/>
+        <img src="https://www.thedelhiwalla.com/wp-content/uploads/2016/03/a3-1.jpg" className="card-img" alt="..."/>
         <div className="card-img-overlay text-center">
-          <p className="card-text">{books.length} {t('home.category.num-text')}</p>
+          <p className="card-text text-light">{books.length} {t('home.category.num-text')}</p>
           <Link to={`/store/${cat._id}`}>
             <button
               type="button"
-              className="btn btn-outline-light position-absolute top-50 start-50 translate-middle">
+              className="btn btn-outline-light position-absolute top-50  translate-middle">
               <a target="_blank">{t('home.category.btn')}</a>
             </button>
           </Link>
           <h5 className="card-title position-absolute bottom-0 start-50 translate-middle-x p-2">{cat.name}</h5>
-          <div className="overlay"></div>
+          {/* <div className="overlay"></div> */}
         </div>
       </div>
     </div>

@@ -31,22 +31,22 @@ export default function MyStore() {
             {order.map((e) => (
               <div className="card w-100 mb-3" style={{ width: "18rem", background: "rgba(240, 248, 255, 0.752)",}} key={e._id}>
                 <div className="card-body">
-                  <div className="row w-100">
-                    <div className="col-6">
+                  <div className="row w-100 ms-0">
+                    <div className="col-lg-5 mb-5 order-info">
                       <h6 className="card-text">{t("client-zone.store.l-address")} : <b> {e.address}</b></h6>
                       <h6 className="card-text ">{t("client-zone.store.method")} : <b> {e.paymentMethod}</b></h6>
                       <h6 className="card-text">{t("client-zone.store.items")} : <b> {e.items.length}</b></h6>
                       <h6 className="card-text">{t("client-zone.store.price")} : <b>{e.totalPrice}.00 {t('product-details.p-egp')}</b></h6>
                     </div>
-                    <div className="col-6">
+                    <div className="col-lg-7">
                       <div className="card-text">{e.items.map((b)=>{
                       return(
-                        <div className="card mb-3" style={{maxWidth: "540px"}} key={b._id}>
+                        <div className="card mb-3 details-order" style={{maxWidth: "500px"}} key={b._id}>
                           <div className="row g-0">
-                            <div className="col-md-4">
+                            <div className="col-sm-4">
                               <img src={b.book.bookImage} className="img-fluid rounded-start" alt="img_order"/>
                             </div>
-                            <div className="col-md-8">
+                            <div className="col-sm-8">
                               <div className="card-body text-center">
                               <Link to={`/details/${b.book._id}`} style={{textDecoration:"none"}}>
                                 <h4 className="card-text ">{b.book.bookTitle}</h4>

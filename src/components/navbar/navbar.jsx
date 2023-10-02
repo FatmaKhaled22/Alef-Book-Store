@@ -28,16 +28,16 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light px-4">
+      <nav className="navbar navbar-expand-lg navbar-light px-3 py-1">
         <div className="container-fluid ">
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" 
-            data-bs-target="#navbarNavDropdown" 
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-          </button>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" 
+          data-bs-target="#navbarNavDropdown" 
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
           <NavLink to="/home" className="nav-link">
-            <img src="/assets/img/nav_img.png" alt="logo" height="70" />
+            <img src="/assets/img/nav_img.png" alt="logo" height="70" className="logo"/>
           </NavLink>
           <div className="collapse navbar-collapse flex-grow-0 " id="navbarNavDropdown">
             <ul className="navbar-nav">
@@ -55,7 +55,7 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
                 <NavLink to="/contact" className="nav-link">{t("navbar.contact")}</NavLink>
-              </li>
+              </li><hr/>
               <div id="navy">
                 <ul className="navbar-nav d-flex align-content-center flex-wrap nav">
                   <ul className="navbar-nav nav">

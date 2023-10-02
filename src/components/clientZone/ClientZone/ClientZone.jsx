@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import "../../clientZone/App.css";
+import '../clientzone.css';
 import { ClientActivePageCntxt } from "../../clientZone/CLientZoneRouter";
 import Profile from "./profile/Profile";
 import MyAddress from "./myAddress/MyAddress";
@@ -54,7 +55,7 @@ function ClientZone(e) {
     updatePage(activePage);
   }
   return (
-    <div className=" container page-header noBackground">
+    <div className="container-fluid page-header noBackground container-width">
       <div className="container-fluid page-header noBackground mb-5">
         <div className="row">
           <div className="container modulesTitleContainer">
@@ -77,11 +78,11 @@ function ClientZone(e) {
             <span className="visually-hidden ">Loading...</span>
           </Spinner>
         ) : (
-          <div className="row mb-5">
-            <div className="col-xs-12 col-sm-12 col-md-4">
+          <div className="row mb-5 ">
+            <div className="col-xs-12 col-sm-12 col-md-4 left-client">
               <div className=" clientZoneProfileImage box-primary box-text-primary text-center">
                 <div
-                  className="profile-image "
+                  className="profile-image text-center"
                   style={{ position: "relative" }}
                 >
                   <img
@@ -114,7 +115,7 @@ function ClientZone(e) {
                       </Spinner>
                     </div>
                   </div>
-                  <form className="client" action="#">
+                  <form className="client opacity-0" action="#">
                     <div className=" ps-5">
                       <input
                         type="file"
@@ -127,7 +128,7 @@ function ClientZone(e) {
                 </div>
 
                 <div className="clientemail">
-                  <h4 className="email fw-bold d-block p-3">
+                  <h4 className="email fw-bold d-block p-3" style={{fontSize:"1rem"}}>
                     {data.email}
                   </h4>
                   <i
@@ -204,7 +205,7 @@ function ClientZone(e) {
                 </div>
               </div>
             </div>
-            <div className="col-xs-12 col-sm-12 col-md-8">
+            <div className="col-xs-12 col-sm-12 col-md-8 right-client">
               {clientActivePage === "profile" && <Profile data={data} />}
               {clientActivePage === "address" && <MyAddress data={data}/>}
               {clientActivePage === "Store" && <MyStore />}

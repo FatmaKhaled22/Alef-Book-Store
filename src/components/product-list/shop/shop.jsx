@@ -14,7 +14,7 @@ const Shop = () => {
   return (
     <>
       <nav aria-label="breadcrumb" className="container">
-        <ol className="breadcrumb">
+        <ol className="breadcrumb"  id='breadcrumb'>
           <li className="breadcrumb-item">
             <NavLink to="/home" className="nav-link">{t('product-list.shop.home')}</NavLink>
           </li>
@@ -23,7 +23,6 @@ const Shop = () => {
           </li>
           <li className="breadcrumb-item active" aria-current="page">
             <NavLink to="#" className="nav-link">{category.name}</NavLink>
-            {/* {category.name} */}
           </li>
         </ol>
       </nav>
@@ -35,10 +34,12 @@ const Shop = () => {
         <div className="small"></div>
       </div>
       
-      <div className="container" >
-        <div className="row gx-lg-4" >
-          <Filter />
-          <div className="row row-cols-md-2 row-cols-lg-3  row-cols-1 col-9 px-5" style={{ alignContent: 'flex-start' }}>
+      <div className="container-lg product-sec">
+        <div className="row">
+          <div className='col-sm-4 px-3'>
+            <Filter />
+          </div>
+          <div className="col-sm-8 px-5 product" style={{ alignContent: 'flex-start' }}>
           <Product />
           </div>
         </div>

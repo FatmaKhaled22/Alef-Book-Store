@@ -13,7 +13,7 @@
     bottom: 0;
     background-color: rgba(0,0,0);
     /* transition: right 0.5s ease; */
-    z-index: 2;
+    z-index: 1000;
     cursor: pointer;
 }
   
@@ -71,7 +71,7 @@ body[dir='ltr']  #searchBtn{
     font-size: 60px;
 }
 /*  */
-.call{
+.call, .lang{
     color: white;
 }
 .call i , .call h1{
@@ -79,4 +79,11 @@ body[dir='ltr']  #searchBtn{
 }
 .call i:hover , .call h1:hover{
     color: var(--color);
+}
+
+@media (max-width: 800px) {
+    .call i , .call h1 , .lang{
+        font-size: 5vw !important;
+    }
+
 }

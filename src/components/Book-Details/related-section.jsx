@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link,useParams } from "react-router-dom";
-import StarRate from "../rating/rating";
 import { useTranslation } from 'react-i18next';
 
 const Related = ({catId}) => {

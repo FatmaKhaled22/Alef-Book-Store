@@ -7,32 +7,54 @@ import swal from "sweetalert";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../../../config/axiosConfig";
 const register_URL = "/auth/register";
-
+const upload_URL = "/upload";
 
 export default function ClientzoneRegister() {
+
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/login";
+
   const errRef = useRef();
   const [errMsg, setErrMsg] = useState("");
   const [loading, setLoading] = useState(false);
-  const handleSubmit = async (e) => {
-    console.log(e);
+
+  const [selectedFile, setSelectedFile] = useState(null);
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+  };
+
+  const handleSubmit = async (values) => {
     setLoading(true);
     try {
-      const res = await axios.post(register_URL, e);
+      let imageUploadUrl = "";
+      if (selectedFile) {
+
+        const formData = new FormData();
+        formData.append("image", selectedFile);
+        const resUpload = await axios.post(upload_URL, formData);
+        console.log(resUpload.data.imageUrl); // Assuming the response contains the uploaded image URL
+        imageUploadUrl = resUpload.data.imageUrl;
+      }
+
+      const userData = { ...values, image: imageUploadUrl };
+      const res = await axios.post(register_URL, userData);
       console.log(res);
-      swal("succefully registration", "You clicked the button!", "success");
+      swal("Registered Successfully ", "Please Login !", "success");
       setLoading(false);
+      navigate(from, { replace: true });
+
     } catch (err) {
-      if (!err?.res) {
-        swal("registration rejected ", "You clicked the button!", "warning");
-        setLoading(false);
-      } else if (err.res?.status === 400) {
-        setErrMsg("Missing Email or Password validation ");
-      } else if (err.res?.status === 401) {
+      if (!err.response) {
+        swal("Registration rejected ", "You clicked the button!", "warning");
+      } else if (err.response.status === 400) {
+        setErrMsg("Missing Email or Password validation");
+      } else if (err.response.status === 401) {
         setErrMsg("Unauthorized");
       } else {
-        setErrMsg("Register Faild ");
+        setErrMsg("Registration Failed: " + err.message);
       }
-      errRef.current.focus();
+      setLoading(false);
     }
   };
   const initialValues = {
@@ -46,7 +68,7 @@ export default function ClientzoneRegister() {
   };
   const { t } = useTranslation();
   return (
-    <div className="m-5">
+    <div className="m-3">
       <div className="container-fluid page-header noBackground mb-5">
         <div className="row">
           <div className="container modulesTitleContainer">
@@ -74,116 +96,122 @@ export default function ClientzoneRegister() {
             validationSchema={registerValidation}
             onSubmit={handleSubmit}
           >
-            <Form >
-              <div className="row">
-              <div className="col-sm-6 ">
-              <Field
-                type="file"
-                name="image"
-                placeholder="image *"
-                className="form-control mb-3 p-3"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-              />
-              <ErrorMessage
-                name="image"
-                component="p"
-                className="text-danger"
-              />
-              <Field
-                type="text"
-                name="firstName"
-                placeholder={t("client-zone.profile.l-fname")}
-                className="form-control mb-3 p-3"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-              />
-              <ErrorMessage
-                name="firstName"
-                component="p"
-                className="text-danger"
-              />
-              <Field
-                type="text"
-                name="lastName"
-                placeholder={t("client-zone.profile.l-lname")}
-                className="form-control mb-3 p-3"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-              />
-              <ErrorMessage
-                name="lastName"
-                component="p"
-                className="text-danger"
-              />
-              <Field
-                type="email"
-                name="email"
-                placeholder={t("client-zone.client.reg-email")}
-                className="form-control mb-3 p-3"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-              />
-              <ErrorMessage
-                name="email"
-                component="p"
-                className="text-danger"
-              />
-              </div>
-              <div className="col-sm-6">
-              <Field
-                type="password"
-                name="password"
-                placeholder={t("client-zone.client.reg-pass")}
-                className="form-control mb-3 p-3"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-              />
-              <ErrorMessage
-                name="password"
-                component="p"
-                className="text-danger"
-              />
-              <Field
-                type="text"
-                name="phoneNumber"
-                placeholder={t("client-zone.profile.l-phone")}
-                className="form-control mb-3 p-3"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-              />
-              <ErrorMessage
-                name="phoneNumber"
-                component="p"
-                className="text-danger"
-              />
-              <Field
-                type="text"
-                name="address"
-                placeholder={t("order.info-sec.l-address")}
-                className="form-control mb-3 p-3"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-              />
-              <ErrorMessage
-                name="address"
-                component="p"
-                className="text-danger"
-              />
-              <Field
-                type="text"
-                name="country"
-                placeholder={t("order.info-sec.l-country")}
-                className="form-control mb-3 p-3"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-              />
-              <ErrorMessage
-                name="country"
-                component="p"
-                className="text-danger"
-              />
-              </div>
+            <Form>
+              <div className="row mt-4">
+                <div className="col-md-6 input-reg">
+                  <Field
+                    type="file"
+                    name="image"
+                    placeholder="image *"
+                    className="form-control mb-3 p-3"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                    onChange={handleImageChange}
+                    // onChange={(event) => {
+                    //   const file = event.target.files[0];
+                    //   setSelectedFile(file);
+                    //   console.log("Selected File:", file); // Debugging statement to check the selected file
+                    // }}
+                  />
+                  <ErrorMessage
+                    name="image"
+                    component="p"
+                    className="text-danger"
+                  />
+                  <Field
+                    type="text"
+                    name="firstName"
+                    placeholder={t("client-zone.profile.l-fname")}
+                    className="form-control mb-3 p-3"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                  />
+                  <ErrorMessage
+                    name="firstName"
+                    component="p"
+                    className="text-danger"
+                  />
+                  <Field
+                    type="text"
+                    name="lastName"
+                    placeholder={t("client-zone.profile.l-lname")}
+                    className="form-control mb-3 p-3"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                  />
+                  <ErrorMessage
+                    name="lastName"
+                    component="p"
+                    className="text-danger"
+                  />
+                  <Field
+                    type="email"
+                    name="email"
+                    placeholder={t("client-zone.client.reg-email")}
+                    className="form-control mb-3 p-3"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                  />
+                  <ErrorMessage
+                    name="email"
+                    component="p"
+                    className="text-danger"
+                  />
+                </div>
+                <div className="col-md-6 input-reg">
+                  <Field
+                    type="password"
+                    name="password"
+                    placeholder={t("client-zone.client.reg-pass")}
+                    className="form-control mb-3 p-3"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                  />
+                  <ErrorMessage
+                    name="password"
+                    component="p"
+                    className="text-danger"
+                  />
+                  <Field
+                    type="text"
+                    name="phoneNumber"
+                    placeholder={t("client-zone.profile.l-phone")}
+                    className="form-control mb-3 p-3"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                  />
+                  <ErrorMessage
+                    name="phoneNumber"
+                    component="p"
+                    className="text-danger"
+                  />
+                  <Field
+                    type="text"
+                    name="address"
+                    placeholder={t("order.info-sec.l-address")}
+                    className="form-control mb-3 p-3"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                  />
+                  <ErrorMessage
+                    name="address"
+                    component="p"
+                    className="text-danger"
+                  />
+                  <Field
+                    type="text"
+                    name="country"
+                    placeholder={t("order.info-sec.l-country")}
+                    className="form-control mb-3 p-3"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                  />
+                  <ErrorMessage
+                    name="country"
+                    component="p"
+                    className="text-danger"
+                  />
+                </div>
               </div>
               <div className="form-group request m-4 pt-3">
                 <button className="btn btn-primary" type="submit">
@@ -202,7 +230,8 @@ export default function ClientzoneRegister() {
               </div>
               <div className="form-group request text-center m-4 pt-3">
                 <span className="fw-semibold">
-                {t("client-zone.client.acount")}  <Link to="/login">{t("client-zone.client.log-title")}</Link>
+                  {t("client-zone.client.acount")}
+                  <Link to="/login">{t("client-zone.client.log-title")}</Link>
                 </span>
               </div>
             </Form>

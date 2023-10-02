@@ -99,7 +99,7 @@ export default function ClientzoneLogin() {
               validationSchema={loginValidation}
               onSubmit={login}
             >
-              <Form>
+              <Form className="mt-4">
                 <Field
                   type="email"
                   name="email"
@@ -127,7 +127,7 @@ export default function ClientzoneLogin() {
                   className="text-danger"
                 />
                 <div className="form-group request m-4 pt-3">
-                  <button className="btn btn-primary" type="submit">
+                  <button className="btn btn-primary p-3" type="submit">
                     {loading ? (
                       <Spinner
                         animation="border"

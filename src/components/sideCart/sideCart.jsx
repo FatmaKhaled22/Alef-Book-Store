@@ -42,13 +42,13 @@ function SideCart({ isCartOpen, handleClose }) {
                 return (
                   <div className="card mb-3" style={{maxWidth: "480px"}} key={product.book._id}>
                     <div className="row g-0" >
-                      <div className="col-md-4">
+                      <div className="col-sm-4">
                         <img  className="img-fluid " src={product.book.bookImage} alt="cover_image"/>
                       </div>
-                      <div className="col-md-8">
+                      <div className="col-sm-8">
                         <div className="card-body">
                           <div className='d-flex justify-content-between'>
-                            <h3 className="card-title">{product.book.bookTitle}</h3>
+                            <h2 className="card-title">{product.book.bookTitle}</h2>
                             <i className="bi bi-trash" onClick={() => {dispatch(removeFromCart(product));  }}></i>
                           </div>
                           <p className="card-text price">{Number(product.book.price) * product.quantity}.00 {t('product-details.p-egp')}</p>
@@ -76,21 +76,21 @@ function SideCart({ isCartOpen, handleClose }) {
                     }, 0)}.00 {t('product-details.p-egp')}
                   </p>
                 </div>
-                <div>
+                <div className='btn-sidecart'>
                   { 
                     localStorage.getItem('user') ? 
                   <Link to={`/order`}>
-                    <button className="btn btn-custom btn-lg w-100 m-3" id="orderBtn" 
+                    <button className="btn btn-custom btn-lg w-100 mb-3" id="orderBtn" 
                     onClick={() => { handleClose()}}>{t('side-cart.btn-order')}</button>
                   </Link>
                   : 
                   <Link to={`/login`}>
-                  <button className="btn btn-custom btn-lg w-100 m-3" id="orderBtn" 
+                  <button className="btn btn-custom btn-lg w-100 mb-3" id="orderBtn" 
                   onClick={() => { handleClose()}}>{t('side-cart.btn-loginFirst')}</button>
                 </Link>
                     } 
                 </div>
-                <button className="btn btn-custom btn-lg w-100 m-3"id="continueBtn" 
+                <button className="btn btn-custom btn-lg w-100 mb-3"id="continueBtn" 
                 onClick={() => { handleClose()}}>{t('side-cart.btn-continue')}</button>
               </div>
             )}

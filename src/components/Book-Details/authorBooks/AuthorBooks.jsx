@@ -16,7 +16,7 @@ const AuthorBooks = () => {
 
   return (
 <>
-  <div className="container" >
+  <div className="container-lg">
     <section>
       <div className="container pt-2">
         <div className="row text-center">
@@ -29,12 +29,12 @@ const AuthorBooks = () => {
         </div>
       </div>
     </section>
-    <div className="row row-cols-md-2 row-cols-lg-4  row-cols-1 col-12 px-5 pt-5 justify-content-center" >
+    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 p-4" >
       {
         authorBooks.map((book) => (
-          <div className="col mb-5" style={{ height: '620px' }} key={book._id}>
+          <div className="col mb-5 auth-sec" style={{ height: '620px' }} key={book._id}>
             <div className="card h-100" style={style}>
-              <img className="card-img-top" src={book.bookImage} style={{ height: '340px' }} />
+              <img className="card-img-top" src={book.bookImage} />
               <div className="card-body p-4">
                 <div className="text-center" >
                   <h5 className="fw-bolder"  >{book.bookTitle}</h5>

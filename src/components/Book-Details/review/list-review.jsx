@@ -22,13 +22,13 @@ function ListReview({bookId,WWE}) {
  
   return (
     <>
-      {reviews.length === 0 && <h5 className="text-center py-3">{t('review.no-comment')}</h5>}
+      {reviews.length === 0 && <h6 className="text-center py-3">{t('review.no-comment')}</h6>}
       <ul className="list-group m-2 list" style={{height:'500px',overflowY: 'auto'}}>
         {reviews.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((review,index) => {
           return (
             <li className="list-group-item d-flex border"  key={index}>
               <div className="">
-                <div className="d-flex justify-content-center">
+                <div className="d-flex justify-content-center nfo-user">
                   <img src={review.user.image} width={'50px'} className="rounded-circle m-2" alt="User Avatar" />
                   <h5 className="fw-bold pt-4">{`${review.user.firstName} ${review.user.lastName}`}</h5>
                 </div>

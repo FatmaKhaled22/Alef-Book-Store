@@ -57,12 +57,13 @@ const Product = () => {
         <option value="Asc">{t('product-list.sort.op2')}</option>
       </select>
       
+      <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
       {sortedBooks.length == 0 ? <h1 style={{textAlign:'center',width:'100%'}}>Books Not found</h1>: sortedBooks.map((book) =>  {
         return (
-          <div className="col mb-5" style={{height:'580px'}} key={book._id}>
-
+          
+          <div className="col mb-5 product" style={{height:'600px'}} key={book._id}>
             <div className="card h-100" style={style}>
-              <img className="card-img-top" src={book.bookImage} style={{height:'350px'}} />
+              <img className="card-img-top" src={book.bookImage} />
               <div className="card-body pt-4">
                 <div className="text-center">
                   <h5 className="fw-bolder">{book.bookTitle}</h5>
@@ -82,6 +83,8 @@ const Product = () => {
           </div>
         );
       })}
+      </div>
+      
     </>
   )
 }

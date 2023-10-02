@@ -1,3 +1,4 @@
+
 import React, { useState,useEffect  } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { resetFilterCount,addPriceFilter,removePriceFilter,setAuthorFilter,removeAuthorFilter } from '../../../store/reducers/booksSlice';
@@ -125,7 +126,7 @@ const handleclick = () => {
 
 return (
   <>
-      <ul className="list-group col-3 ">
+      <ul className="list-group px-2">
         <h3>{t('product-list.filter.title')}</h3>
         <hr />
         <br />
@@ -143,7 +144,7 @@ return (
             ></i>
           </div>
           <hr />
-          <div className="collapse multi-collapse" id="multiCollapseExample1">
+          <div className="collapse multi-collapse price-sec" id="multiCollapseExample1">
             <li className="list-group-item">
               <input className="form-check-input mx-2"
                 type="checkbox"
@@ -215,13 +216,10 @@ return (
             ></i>
           </div>
           <hr />
-          <div className="collapse multi-collapse" id="multiCollapseExample2">
-
+          <div className="collapse multi-collapse name-auth-sec" id="multiCollapseExample2">
             {uniqueAuthors.map((author) => {
-             
-                 return (
+              return (
                 console.log('wwwwwwwwwwwwwww',author.name),
-
                 <li className="list-group-item" key={author._id}>
                   <input
                     className="form-check-input mx-2"
@@ -229,7 +227,7 @@ return (
                     id={author._id}
                     value={author.name}
                     onChange={handelSelectedAuther}
-                     />
+                  />
                   <label className="form-check-label" htmlFor={author.name}>
                     {author.name}
                   </label>

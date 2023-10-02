@@ -5,6 +5,8 @@ import { useTranslation } from "react-i18next";
 import axios from "../../../../config/axiosConfig";
 const USER_URL = "/users/";
 import Spinner from "react-bootstrap/Spinner";
+import '../../clientzone.css';
+
 export default function Profile({data}) {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
@@ -69,7 +71,7 @@ export default function Profile({data}) {
               </Spinner>
             ) : (
               <div className="row">
-                <div className="col-xs-12 col-md-6">
+                <div className="col-xs-12 col-md-6 input-profile">
                   {/* First name */}
                     <label htmlFor="first_name">
                       {t("client-zone.profile.l-fname")}
@@ -121,7 +123,7 @@ export default function Profile({data}) {
                       className="text-danger"
                     />
                 </div>
-                <div className="col-xs-12 col-md-6">
+                <div className="col-xs-12 col-md-6 input-profile">
                   {/* Last name */}
                     <label htmlFor="last_name">
                       {t("client-zone.profile.l-lname")}

@@ -27,7 +27,7 @@ function DeliveryComponent(props) {
 
     return <>
       <div className="row flex-column flex-md-row mx-3" id="delivery-page">
-      <div className="col-12 col-md-8">
+      <div className="col-12 col-lg-8">
 
         <Formik initialValues={{dOption:''}} validationSchema={validationSchema} onSubmit={handleSubmit}>
         <Form id="delivery-options" >
@@ -67,7 +67,7 @@ function DeliveryComponent(props) {
           </Formik>
         </div>
 
-        <div className="col-12 col-md-4" >
+        <div className="col-12 col-lg-4" >
           <div id="order-container-delivery">
             {cart.map((product) => {
               return (
@@ -89,10 +89,10 @@ function DeliveryComponent(props) {
             })}
           </div>
         <div className="row m-5 " id="total">
-          <div className="col-6">
+          <div className="col-sm-6">
             <h5>{t('order.delivery-sec.total')} : </h5>
           </div>
-          <div className="col-6" id="total-price">
+          <div className="col-sm-6" id="total-price">
             <h5 style={{ color: "#900c3f" }}> 
               {cart.reduce((total, product) => {
                 return (

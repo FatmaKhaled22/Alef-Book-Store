@@ -28,7 +28,8 @@ const Contact = () => {
 
   return (
     <>
-      <div className="content mt-5 mt-4" id="Contact">
+      <div className="container-contact">
+      <div className="content" id="Contact">
         <div className="container">
           <div className="row">
             <div className="heading d-flex flex-column align-items-center mb-5">
@@ -37,8 +38,8 @@ const Contact = () => {
               </div>
               <div className="small"></div>
             </div>
-            <div className="d-flex col-md-6 mr-auto justify-content-around">
-              <ul className="list-unstyled pl-md-5 mb-5">
+            <div className="d-flex col-lg-6 mr-auto justify-content-around">
+              <ul className="list-unstyled pl-md-5 mb-5 contact-text">
                 <li className="mb-5 text-center">
                   {t("home.contact.address1")}
                   <br />
@@ -53,7 +54,7 @@ const Contact = () => {
                       {t("home.contact.calling")}
                     </a>
                   </li>
-                  <li className="d-flex text-black mb-2">
+                  <li className="d-flex text-black">
                     <div>
                       <i className="bi bi-envelope mx-2"></i>
                     </div>
@@ -64,9 +65,9 @@ const Contact = () => {
                       {t("home.contact.email")}
                     </a>
                   </li>
-                  <li className="d-flex text-black mb-2">
+                  <li className="d-flex text-black">
                     <li>
-                      <i className="bi bi-clock mx-2"></i>
+                      <i className="bi bi-clock mx-1"></i>
                       {t("home.contact.time")}
                     </li>
                   </li>
@@ -74,15 +75,15 @@ const Contact = () => {
                     <p>{t("home.contact.qhelp")}</p>
                   </div>
                   <ul
-                    className="d-inline-flex text-center"
+                    className="d-inline-flex text-center p-0"
                     style={{ listStyleType: "none" }}
                   >
-                    <li className="">
+                    <li>
                       <a className="mainCOlor" href="">
                         <i className="bi bi-instagram fa-2x "></i>
                       </a>
                     </li>
-                    <li className="">
+                    <li>
                       <a className="mainCOlor" href="">
                         <i className="bi bi-facebook fa-2x "></i>
                       </a>
@@ -92,7 +93,7 @@ const Contact = () => {
               </ul>
             </div>
 
-            <div className="col-md-6">
+            <div className="col-lg-6">
               <form
                 className="mx-5"
                 method="post"
@@ -145,7 +146,7 @@ const Contact = () => {
                     <input
                       type="submit"
                       value={t("home.contact.btn-submit")}
-                      className="btn btn-primary rounded-1 py-2 px-4"
+                      className="btn btn-primary rounded-1 py-2 px-4 mb-5"
                     />
                     {success ? (
                       <Spinner
@@ -167,6 +168,8 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      </div>
+      
       <br />
       <br />
       <hr />

@@ -233,7 +233,7 @@ a {
     align-items: center;
     align-content: center;
     justify-content: space-between;
-    margin-left: 100px;
+    margin-left: 10vw;
 }
 .box-primary .profile-image .prof-image{
     width: 100px;
@@ -335,14 +335,15 @@ a {
     margin-bottom: 30px;
 }
 
-.profile-container-btn .btn {
+/* .profile-container-btn .btn {
     min-width: 300px;
-}
+} */
 
 form {
     padding: 0px;
     border-right: 0px;
     margin-bottom: 0px;
+    border-bottom: none !important;
 }
 
 .addresses .addresses-container .addresses-list-container{

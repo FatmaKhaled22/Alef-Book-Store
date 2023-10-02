@@ -31,13 +31,13 @@ function LangSwitch() {
             <button className='close d-flex justify-content-end'>
                 <i className ="bi bi-x-circle p-3" id ="closeBtn" onClick={handelGoBack}></i>
             </button>
-            <div className ='m-5 call text-center'>
+            <div className ='m-5 lang text-center'>
                 <div className="d-flex justify-content-center">
-                    <img src='/assets/img/Flag_of_the_United_States.svg.png' width={'60px'} height={'30px'} className='m-3'/>
+                    <img src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png' width={'60px'} height={'30px'} className='m-3'/>
                     <h1><a onClick={() => {changeLanguage('en'); handelGoBack();}}>English</a></h1>
                 </div>
                 <div className="d-flex justify-content-center">
-                    <img src='/assets/img/Flag_of_Egypt.svg.webp' width={'60px'} height={'30px'} className='m-3'/>
+                    <img src='https://t4.ftcdn.net/jpg/04/89/76/31/360_F_489763148_dYk2Yh4llD4zZWC8kfhx84rXiA3HJvzO.jpg' width={'60px'} height={'30px'} className='m-3'/>
                     <h1><a onClick={() => {changeLanguage('ar'); handelGoBack();}}>Arabic (العربية) - Egypt </a></h1>
                 </div>
             </div>

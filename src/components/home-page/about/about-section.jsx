@@ -6,7 +6,7 @@ const About = () => {
   const { t } = useTranslation();  
   return (
     <>
-    <div role="main" className="container">
+    <div role="main" className="container about">
         <div id="About">
             <div className="heading d-flex flex-column align-items-center mb-5">
                 <div><h1>{t('home.about.title')}</h1></div><div className="small"></div>
@@ -27,10 +27,10 @@ const About = () => {
                     <img src="/assets/img/1.jpg" className="w-100 h-auto rounded mb-4" />
                 </div>
                 <div className="col-lg-4">
-                    <img src="/assets/img/3.jpg" className="w-100 h-auto rounded mb-4" />
+                    <img src="/assets/img/2.jpg" className="w-100 h-auto rounded mb-4" />
                 </div>
                 <div className="col-lg-4">
-                    <img src="/assets/img/2.jpg" className="w-100 h-auto rounded mb-4" />
+                    <img src="/assets/img/3.jpg" className="w-100 h-auto rounded mb-4" />
                 </div>
             </div>
         </div>

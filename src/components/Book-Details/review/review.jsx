@@ -3,7 +3,7 @@ import ListReview from "./list-review";
 import { useState } from "react";
 import FormComment from "./form-comment";
 import { useTranslation } from "react-i18next";
-import { Link, useParams } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "../../../config/axiosConfig";
 
@@ -71,7 +71,7 @@ function Review() {
   return (
     <>
       <div className="container">
-        <div className="row" style={{ width: "50%" }}>
+        <div className="row review">
           <div className="heading d-flex flex-column align-items-start">
             <div>
               <h2>{t("review.title")}</h2>
@@ -79,7 +79,7 @@ function Review() {
             <div className="small"></div>
           </div>
           {user ? (
-            <div>
+            <div className="condition">
               {order.length == 0 ? ( <h4 className="text-center text-color">{t("review.order")}</h4> ) 
               : (
                 <div>
