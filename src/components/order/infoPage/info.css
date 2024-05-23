@@ -11,3 +11,7 @@
     border-color: #900c3f;
   }
   
+  #order-container{
+    max-height: 511px;
+    overflow-y: auto;
+  }

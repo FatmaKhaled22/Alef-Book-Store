@@ -1,12 +1,31 @@
 #delivery-save {
-    background-color:#900c3f;
-    color: #fff;
-    border-color: #900c3f;
-    border-radius: 5px;
-  }
+  background-color:#900c3f;
+  color: #fff;
+  border-color: #900c3f;
+  border-radius: 5px;
+}
 #delivery-save:hover {
-    background-color:#900c3fde;
-    color: #fff;
-    border-color: #900c3f;
+  background-color:#900c3fde;
+  color: #fff;
+  border-color: #900c3f;
+}
+#order-container-delivery{
+  max-height: 320px;
+  overflow-y: auto;
+}
+@media only screen and (max-width: 600px) {
+  #delivery-page{
+    margin: 0px !important;
   }
-  
+  #delivery-options span{
+    font-size: 2.8vw;
+  }
+  #delivery-save{
+    font-size: 4vw;
+  }
+}
+@media only screen and (max-width: 400px) {
+  #order-container-delivery .card-body h5 , #order-container-delivery .card-body span , #total h5{
+    font-size: 4vw !important;
+  }
+}

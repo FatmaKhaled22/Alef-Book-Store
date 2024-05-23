@@ -10,11 +10,13 @@
   border-color: #900c3f;
 }
   
-  .payment-method{
-       
-     
-    border: 1px solid #900c3f;
-    background-color:rgba(211, 211, 211, 0.438);
-    padding: 10px;
-
+.payment-method{
+  border: 1px solid #900c3f;
+  background-color:rgba(211, 211, 211, 0.438);
+  padding: 10px;
+}
+@media only screen and (max-width: 400px) {
+  #payment-page h5 ,#payment-page .btn{
+    font-size: 5vw !important;
   }
+}

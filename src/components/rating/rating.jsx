@@ -7,24 +7,6 @@ const StarRate = () => {
   const [hoverFill, setHoverFill] = useState(null);
   const [isHover, setIsHover] = useState(null);
 
-  //   const getReviewLabel = (rating) => {
-  //     switch (rating) {
-  //       case 1:
-  //         return `Very bad ${String.fromCodePoint("0x1F922")}`;
-  //       case 2:
-  //         return `Bad ${String.fromCodePoint("0x1F97A")}`;
-  //       case 3:
-  //         return `Okay ${String.fromCodePoint("0x1F60C")}`;
-  //       case 4:
-  //         return `Good ${String.fromCodePoint("0x1F60A")}`;
-  //       case 5:
-  //         return `Excellent ${String.fromCodePoint("0x1F929")}`;
-
-  //       default:
-  //         return "";
-  //     }
-  //   };
-
   return (
     <div className="star-wrapper">
       <div className="star">

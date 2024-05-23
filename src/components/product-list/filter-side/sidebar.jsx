@@ -1,51 +1,139 @@
-import React, { useState } from "react";
+
+import React, { useState,useEffect  } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { resetFilterCount,addPriceFilter,removePriceFilter,setAuthorFilter,removeAuthorFilter } from '../../../store/reducers/booksSlice';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom'
+
 import "./sidebar.css";
 
 const Filter = () => {
-  const authors = useSelector((state) => state.authors);
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const { id : categoryId  } = useParams();
 
-  // useEffect(() => {
-  //   getAuthors()
-  //     .then((data) => {
-  //       dispatch(setAuthors(data))
-  //     })
-  //     .catch((err) => {
-  //       console.log('error in getting authors', err)
-  //     })
-  // }, [])
-  ///////////////////////////////////////////////////
-  ///Btn-Collaps
-  const [isClick, setClick] = useState("false");
-  const handleclick = () => {
-    console.log("like");
-    setClick(!isClick);
-  };
-  ////////////////////////////////////////////////////
-  ///get selected checked box
-  const [filterById, setFilterById] = useState([]);
-  const filterHandler = (event) => {
-    if (event.target.checked) {
-      setFilterById([...filterById, event.target.value]);
-      console.log(event.target.value);
-    } else {
-      setFilterById(
-        filterById.filter((filter) => filter !== event.target.value)
-      );
-      // console.log(event.target.value);
+
+  //==========================================================//
+  useEffect(() => {
+      dispatch(resetFilterCount())
+  }, [categoryId]);
+
+
+  //2th edit
+  // State to store selected filters
+  const [selectedFilters, setSelectedFilters] = useState({
+    price: [],
+    author: [],
+  });
+  //==========================================================//
+  const categoryBooks = useSelector((state) =>
+  state.books.books.filter(
+    (book) =>
+      book.category === state.books.categoryId &&
+      (selectedFilters.price.length === 0 ||
+        selectedFilters.price.includes(book.price.toString())) &&
+      (selectedFilters.author.length === 0 ||
+        selectedFilters.author.includes(book.author.name))
+  )
+);
+
+  const authorsBooks = useSelector((state) => state.books.books.filter((book) =>
+      book.category === state.books.categoryId).map((book) => book.author)
+   );
+   console.log('num of books categoryBooks ----->',authorsBooks);
+   const uniqueAuthors = authorsBooks.filter((book, index, self) =>
+    index === self.findIndex((b) => b.name === book.name)
+  );
+  console.log('authors------->',uniqueAuthors);
+
+  //============================================//
+  const handelSelectedPrice = (event) =>{
+    const price = event.target.value; 
+    const isChecked = event.target.checked;
+    console.log('SelectedPrice:', price);
+    
+    if (isChecked) {
+      dispatch(addPriceFilter(price)); 
+    
+    }else if(!isChecked){
+      dispatch(removePriceFilter(price)); 
     }
-  };
+  }
+  // const handelSelectedPrice = (event) => {
+  //   const price = event.target.value;
+  //   const isChecked = event.target.checked;
+  
+  //   setSelectedFilters((prevFilters) => {
+  //     if (isChecked) {
+  //       return { ...prevFilters, price: [...prevFilters.price, price] };
+  //     } else {
+  //       return {
+  //         ...prevFilters,
+  //         price: prevFilters.price.filter((p) => p !== price),
+  //       };
+  //     }
+  //   });
+  //   if (isChecked) {
+  //     dispatch(addPriceFilter(price)); // Dispatch the action with the selected price
+  //   } else {
+  //     dispatch(removePriceFilter(price)); // Dispatch the action to remove the price filter
+  //   }  
+  
+  
+  // };
 
-  return (
-    <>
-      <ul className="list-group col-3 text-start">
-        <h3>Filter By</h3>
+//=================================================//
+ 
+
+
+//=============get selected Auther ================//
+// const [filterById, setFilterById] = useState([]);
+
+//   const  handelSelectedAuther = (event) => {
+//     const auther = event.target.value; 
+//     const isChecked = event.target.checked;
+//     console.log('SelectedAuthor:', auther);
+    
+//     if (isChecked) {
+//       dispatch(setAuthorFilter(auther)); 
+//     }else if(!isChecked){
+//       dispatch(removeAuthorFilter(auther)); 
+//     }
+//     console.log('Checkbox checked:', event.target.checked);
+// };
+
+const handelSelectedAuther = (event) => {
+  const author = event.target.value;
+  const isChecked = event.target.checked;
+
+  if (isChecked) {
+    dispatch(setAuthorFilter(author)); 
+  
+  }else if(!isChecked){
+    dispatch(removeAuthorFilter(author)); 
+  }
+
+
+};
+//=============get selected Auther ================//
+
+
+//------------Btn-Collaps[+,-]--------------//
+const [isClick, setClick] = useState("false");
+const handleclick = () => {
+  setClick(!isClick);
+};
+
+return (
+  <>
+      <ul className="list-group px-2">
+        <h3>{t('product-list.filter.title')}</h3>
         <hr />
         <br />
         {/* filter by Price */}
         <div>
           <div className="d-flex justify-content-between">
-            <h5>Price</h5>
+            <h5>{t('product-list.filter.t-price')}</h5>
             <i
               className={isClick ? "bi bi-plus" : "bi bi-dash"}
               onClick={handleclick}
@@ -56,40 +144,60 @@ const Filter = () => {
             ></i>
           </div>
           <hr />
-          <div className="collapse multi-collapse" id="multiCollapseExample1">
+          <div className="collapse multi-collapse price-sec" id="multiCollapseExample1">
             <li className="list-group-item">
-              <input className="form-check-input me-2"
-                type="checkbox" id='' value='' onChange={filterHandler}/>
+              <input className="form-check-input mx-2"
+                type="checkbox"
+                id='0-49'
+                value='0-49'
+                onChange={handelSelectedPrice}
+              />
               <label className="form-check-label" htmlFor=''>
-                Under 50 EGP
+                {t('product-list.filter.p1')}
               </label>
             </li>
             <li className="list-group-item">
-              <input className="form-check-input me-2"
-                type="checkbox" id='' value='' onChange={filterHandler}/>
+              <input className="form-check-input mx-2"
+                type="checkbox"
+                id='50-100'
+                value='50-100'
+                onChange={handelSelectedPrice}
+              />
               <label className="form-check-label" htmlFor=''>
-                50 EGP - 100 EGP
+                {t('product-list.filter.p2')}
               </label>
             </li>
             <li className="list-group-item">
-              <input className="form-check-input me-2"
-                type="checkbox" id='' value='' onChange={filterHandler}/>
+              <input className="form-check-input mx-2"
+                type="checkbox"
+                id='100-199'
+                value='100-199'
+                onChange={handelSelectedPrice}
+              />
               <label className="form-check-label" htmlFor=''>
-                100 EGP - 200 EGP
+                {t('product-list.filter.p3')}
               </label>
             </li>
             <li className="list-group-item">
-              <input className="form-check-input me-2"
-                type="checkbox" id='' value='' onChange={filterHandler}/>
+              <input className="form-check-input mx-2"
+                type="checkbox"
+                id='200-299'
+                value='200-299'
+                onChange={handelSelectedPrice}
+              />
               <label className="form-check-label" htmlFor=''>
-                200 EGP - 300 EGP
+                {t('product-list.filter.p4')}
               </label>
             </li>
             <li className="list-group-item">
-              <input className="form-check-input me-2"
-                type="checkbox" id='' value='' onChange={filterHandler}/>
+              <input className="form-check-input mx-2"
+                type="checkbox"
+                id='300-1000'
+                value='300-1000'
+                onChange={handelSelectedPrice}
+              />
               <label className="form-check-label" htmlFor=''>
-                Above 300 EGP
+                {t('product-list.filter.p5')}
               </label>
             </li>
           </div>
@@ -97,7 +205,7 @@ const Filter = () => {
          {/* filter by author */}
         <div>
           <div className="d-flex justify-content-between">
-            <h5>Author</h5>
+            <h5>{t('product-list.filter.t-author')}</h5>
             <i
               className={isClick ? "bi bi-plus" : "bi bi-dash"}
               onClick={handleclick}
@@ -108,18 +216,20 @@ const Filter = () => {
             ></i>
           </div>
           <hr />
-          <div className="collapse multi-collapse" id="multiCollapseExample2">
-            {authors.map((author) => {
+          <div className="collapse multi-collapse name-auth-sec" id="multiCollapseExample2">
+            {uniqueAuthors.map((author) => {
               return (
-                <li className="list-group-item" key={author.id}>
+                console.log('wwwwwwwwwwwwwww',author.name),
+                <li className="list-group-item" key={author._id}>
                   <input
-                    className="form-check-input me-2"
+                    className="form-check-input mx-2"
                     type="checkbox"
-                    id={author.surname}
-                    value={author.id}
-                    onChange={filterHandler} />
-                  <label className="form-check-label" htmlFor={author.surname}>
-                    {author.surname}
+                    id={author._id}
+                    value={author.name}
+                    onChange={handelSelectedAuther}
+                  />
+                  <label className="form-check-label" htmlFor={author.name}>
+                    {author.name}
                   </label>
                 </li>
               );

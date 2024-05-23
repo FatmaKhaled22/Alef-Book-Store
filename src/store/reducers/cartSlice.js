@@ -1,11 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = JSON.parse(localStorage.getItem("cart")) || [];
+
 export const cartSlice = createSlice({
   name: 'cart',
-  initialState: [],
+  initialState,
   reducers: {
     addToCart: (state, action) => {
-      const foundBook = state.find(product => product.book.id === action.payload.book.id)
+      const {book} = action.payload
+      console.log('book from addToCart:------>',book._id);
+      // console.log('book from addToCart:------>',book._id);
+
+      const foundBook = state.find(product => product.book._id === action.payload.book._id)
       if (foundBook) {
         return state = increaseQuantity(state, action)
       } else {
@@ -14,7 +20,7 @@ export const cartSlice = createSlice({
     },
     increaseBookQuantity: (state, action) => {
       return state = state.map(product => {
-        if (product.book.id === action.payload.book.id) {
+        if (product.book._id === action.payload.book._id) {
           return { ...product, quantity: product.quantity + 1 };
         }
         return product
@@ -22,40 +28,36 @@ export const cartSlice = createSlice({
     },
     decreaseBookQuantity: (state, action) => {
       return state = state.map(product => {
-        if (product.book.id === action.payload.book.id) {
+        if (product.book._id === action.payload.book._id) {
           return { ...product, quantity: product.quantity - 1 };
         }
         return product
       })
     },
     removeFromCart: (state, action) => {
-      // const index = state.find(product => product.book.id === action.payload.book.id);
-      // return state.slice(0, index).concat(index + 1);
-      // const product = state.filter((p, index) => index !== action.payload)
-
-      // const index = state.filter(product => {
-      //   product.book.id !== action.payload;
-      //   return state = [...state, action.payload];
-      // });
-      console.log(action.payload.book.id);
-      console.log(action.payload);
-      // console.log(product)
+      const updatedCart = state.filter(item => item.book._id !== action.payload.book._id);
+      return updatedCart;
     },
+    
     emptyCart: (state, action) => {
       return state = []
     }
   }
 })
 
-export const { addToCart, increaseBookQuantity, decreaseBookQuantity, removeFromCart, emptyCart } = cartSlice.actions;
 
 const increaseQuantity = (state, action) => {
   return state.map(product => {
-    if (product.book.id === action.payload.book.id) {
+    if (product.book._id === action.payload.book._id) {
       return { ...product, quantity: product.quantity + action.payload.quantity };
     }
     return product
   })
 }
 
+export const updateCartInLocalStorage =  (state) => {
+  localStorage.setItem('cart', JSON.stringify(state));
+};
+
+export const { addToCart, increaseBookQuantity, decreaseBookQuantity, removeFromCart, emptyCart } = cartSlice.actions;
 export default cartSlice.reducer;

@@ -1,5 +1,5 @@
 import React from "react";
-import Category from "./category/category-section";
+import Categories from "./category/Categories";
 import Hero from "./hero/hero-section";
 import About from "./about/about-section";
 import Contact from "./contact/contact-section";
@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <>
       <Hero/>
-      <Category/>
+      <Categories/>
       <Tranding/>
       <About/>
       <Contact/>

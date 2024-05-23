@@ -5,7 +5,7 @@ import { createContext } from 'react';
 export const orderActivePageCntxt=createContext()
 function OrderRoute() {
 
-    const [orderActivePage,setOrderActivePage]=useState('nav-info')
+    const [orderActivePage,setOrderActivePage]=useState('nav-delivery')
   
     function updatePage(activePage){
       setOrderActivePage(activePage)

@@ -3,9 +3,16 @@ div.small {
     margin: 1rem;
     width: 3rem;
 }
+body[dir='rtl'] .breadcrumb-item::before{
+    float: right;
+    padding: 0 10px;
+}
 .breadcrumb .breadcrumb-item a{
     color: #900c3f !important;  
     text-decoration: none;
+}
+.breadcrumb .nav-link{
+    display: inline-block;
 }
 .breadcrumb .active{
     color: #000 !important;  
@@ -32,4 +39,41 @@ div .list-group-item{
 }
 .bi:hover {
     transform: scale(1.3);
+}
+
+.price-sec label{
+    font-size: 1rem;
+}
+.product{
+    margin: 0px !important;
+}
+.product img , .auth-sec img{
+    height: 65vh;
+}
+
+@media only screen and (max-width: 770px) {
+    .product img {
+        height: 65vh;
+    }
+    .price-sec label , .name-auth-sec label{
+        font-size: 2vw !important;
+    }
+    .price-sec li , .name-auth-sec li{
+        padding: 8px 8px !important;
+    }
+}
+@media only screen and (max-width: 570px) {
+    .price-sec label , .name-auth-sec label{
+        font-size: 4vw !important;
+    }
+}
+@media only screen and (max-width: 480px) {
+    #breadcrumb {
+        font-size: 3vw !important;
+    }
+}
+@media only screen and (max-width: 350px) {
+    .product-sec .product{
+        padding: 5vw !important;
+    }
 }

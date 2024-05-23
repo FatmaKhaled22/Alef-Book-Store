@@ -1,0 +1,51 @@
+.container-width{
+   padding: 0 5% !important;
+}
+.details-order img{
+    height: 100% !important;
+}
+@media only screen and (max-width: 575px) {
+    .profile .input-profile , .input-reg {
+        padding: 0px !important;
+    }
+    .login-forms{
+        padding: 15px !important;
+    }
+    .profile .input-profile label{
+        font-size: 4vw !important;
+    }
+    .font-style {
+        padding: 5px !important;
+    }
+    .font-style .card-body{
+        padding: 0px !important;
+    }
+    .order-info .card-text{
+        font-size: 4vw !important;
+    }
+    .font-style .card-text{
+        padding: 5px !important;
+        font-size: 4vw !important;
+    }
+    .details-order img{
+        width: 100% !important;
+    }
+    .details-order h4{
+        font-size: 5vw !important;
+    }
+}
+@media only screen and (max-width: 400px) {
+    .social-login-btn button{
+        font-size: 5vw !important;
+    }
+    .client-zone-orders-rows .card-body{
+        padding: 15px 5px !important;
+    }
+    .addresses, .orders {
+        padding: 15px !important;
+    }
+    .addresses .card{
+        padding: 5px !important;
+    }
+
+}

@@ -1,4 +1,10 @@
-.navbar , .social-div{
+.navbar{
+    position: fixed !important;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+.navbar , .social-div , .footer-sec{
     background-color: #ccafaf !important;
 }
 /*  */
@@ -23,6 +29,10 @@
 .nav-item a:hover:after {
     width: 100%;
 }
+hr{
+  color: #900c3f !important;  
+  opacity: 1 !important;
+}
   
 #navy ul {
     display: flex;
@@ -36,4 +46,39 @@
 }
 .badge{
     background-color: #900c3f !important;
+}
+/* dir */
+.nav{
+    padding-inline-start: 0px !important;
+}
+.footer{
+    padding: 0px !important;
+}
+.footer li{
+    padding: 5px;
+}
+@media only screen and (max-width: 550px) {
+    .footer-sec{
+        font-size: 3vw;
+    }
+    .logo{
+        height: 7vh;
+    }
+}
+@media only screen and (max-width: 450px) {
+    .navbar{
+        padding: 5vw !important;
+    }
+    #navbarNavDropdown ul li{
+        font-size: 4vw !important;
+    }
+    .logo{
+        height: 6vh;
+    }
+    .navbar-toggler{
+        padding: 3px 10px !important;
+    }
+    .footer li{
+        padding: 2px;
+    }
 }
