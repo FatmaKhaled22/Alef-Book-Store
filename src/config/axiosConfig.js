@@ -2,7 +2,8 @@ import { default as axiosroot } from 'axios'
 
 
 const axios = axiosroot.create({
-    baseURL: "http://localhost:3001"
+
+    baseURL: "https://node-b89g.onrender.com/"
 })
 
 export default axios;
